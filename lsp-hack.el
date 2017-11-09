@@ -3,7 +3,7 @@
 ;; Copyright (C) 2017  John Allen <oss@porcnick.com>
 
 ;; Author: John Allen <oss@porcnick.com>
-;; Version: 1.1
+;; Version: 1.1.2
 ;; Package-Requires: ((lsp-mode "3.1"))
 ;; URL: https://github.com/jra3/lsp-hack
 
@@ -57,7 +57,7 @@ CLIENT will be passed into this function by `lsp-define-stdio-client`"
                           dir
                           nil
                           "\\.hhconfig")))
- '(lsp-hack--binary "lsp" "--from=emacs")
+ (list lsp-hack--binary "lsp" "--from=emacs")
  :initialize #'lsp-hack--initialize)
 
 (provide 'lsp-hack)

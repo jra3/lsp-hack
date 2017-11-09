@@ -12,9 +12,9 @@ this repository, or install from MELPA. Add the following to your `.emacs`:
 (require 'lsp-mode)
 (require 'lsp-hack)
 ; Pick your mode!
-;(add-hook 'php-mode-hook #'lsp-python-enable)
-;(add-hook 'xhp-mode-hook #'lsp-python-enable)
-(add-hook 'hack-mode-hook #'lsp-python-enable)
+;(add-hook 'php-mode-hook #'lsp-hack-enable)
+;(add-hook 'xhp-mode-hook #'lsp-hack-enable)
+(add-hook 'hack-mode-hook #'lsp-hack-enable)
 ```
 
 ## Configuration

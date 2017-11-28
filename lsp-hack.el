@@ -57,7 +57,7 @@ CLIENT will be passed into this function by `lsp-define-stdio-client`"
                           dir
                           nil
                           "\\.hhconfig")))
- (list lsp-hack--binary "lsp" "--from=emacs")
+ '("hh_client" "lsp" "--from=emacs")
  :initialize #'lsp-hack--initialize)
 
 (provide 'lsp-hack)

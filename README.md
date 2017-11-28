@@ -15,6 +15,9 @@ this repository, or install from MELPA. Add the following to your `.emacs`:
 ;(add-hook 'php-mode-hook #'lsp-hack-enable)
 ;(add-hook 'xhp-mode-hook #'lsp-hack-enable)
 (add-hook 'hack-mode-hook #'lsp-hack-enable)
+
+; hh_server can choke if you are using symlinks
+(setq find-file-visit-truename t)
 ```
 
 ## Configuration

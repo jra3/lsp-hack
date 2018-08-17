@@ -37,7 +37,6 @@ CLIENT will be passed into this function by `lsp-define-stdio-client`"
   (mapcar #'(lambda (p) (lsp-client-on-notification client (car p) (cdr p)))
           lsp-hack--handlers))
 
-;;;###autoload
 (lsp-define-stdio-client
  lsp-hack "hack"
  (lsp-make-traverser #'(lambda (dir)

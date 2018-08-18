@@ -28,8 +28,9 @@
 (require 'lsp-mode)
 
 (defconst lsp-hack--handlers
-  '(("$/cancelRequest" . (lambda (_w _p) (message "$/cancelRequest")))
-    ("telemetry/event" . (lambda (_w _p) (message "telemetry/event"))))
+  '(("$/cancelRequest" . (lambda (_w _p)))
+    ("window/showStatus" . (lambda (_w _p))) ; would be really cool to show this in the window somehow
+    ("telemetry/event" . (lambda (_w _p))))
   "Handlers for custom messages from hh.")
 
 (defun lsp-hack--initialize (client)

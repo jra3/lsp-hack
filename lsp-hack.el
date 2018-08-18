@@ -28,7 +28,8 @@
 (require 'lsp-mode)
 
 (defconst lsp-hack--handlers
-  '(("telemetry/event" . (lambda (_w _p))))
+  '(("$/cancelRequest" . (lambda (_w _p) (message "$/cancelRequest")))
+    ("telemetry/event" . (lambda (_w _p) (message "telemetry/event"))))
   "Handlers for custom messages from hh.")
 
 (defun lsp-hack--initialize (client)

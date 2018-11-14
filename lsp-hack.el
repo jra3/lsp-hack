@@ -27,17 +27,16 @@
 ;;; Code:
 (require 'lsp-mode)
 
-(defconst lsp-hack--handlers
-  '(("$/cancelRequest" . (lambda (_w _p)))
-    ("window/showStatus" . (lambda (_w _p))) ; would be really cool to show this in the window somehow
-    ("telemetry/event" . (lambda (_w _p))))
-  "Handlers for custom messages from hh.")
+
+(defun lsp-hack--unimplemented (&rest _args)
+  "nothing....")
 
 (defun lsp-hack--initialize (client)
   "Initialization callback for hack.
 CLIENT will be passed into this function by `lsp-define-stdio-client`"
-  (mapcar #'(lambda (p) (lsp-client-on-notification client (car p) (cdr p)))
-          lsp-hack--handlers))
+  (lsp-client-on-notification client "$/cancelRequest" 'lsp-hack--unimplemented)
+  (lsp-client-on-notification client "telemetry/event" 'lsp-hack--unimplemented)
+  (lsp-client-on-request client "window/showStatus" 'lsp-hack--unimplemented))
 
 (lsp-define-stdio-client
  lsp-hack "hack"

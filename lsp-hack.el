@@ -28,8 +28,9 @@
 (require 'lsp-mode)
 
 
-(defun lsp-hack--unimplemented (&rest _args)
-  "nothing....")
+(defun lsp-hack--unimplemented (&rest _args))
+
+(defun lsp-hack--debug (&rest _args))
 
 (defun lsp-hack--initialize (client)
   "Initialization callback for hack.

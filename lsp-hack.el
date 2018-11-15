@@ -3,8 +3,8 @@
 ;; Copyright (C) 2017  John Allen <oss@porcnick.com>
 
 ;; Author: John Allen <oss@porcnick.com>
-;; Version: 1.1.3
-;; Package-Requires: ((lsp-mode "4.2"))
+;; Version: 1.2
+;; Package-Requires: ((lsp-mode "5.0"))
 ;; URL: https://github.com/jra3/lsp-hack
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -36,8 +36,22 @@
   "Initialization callback for hack.
 CLIENT will be passed into this function by `lsp-define-stdio-client`"
   (lsp-client-on-notification client "$/cancelRequest" 'lsp-hack--unimplemented)
+
+  ;; notifications taken from nuclide
+  (lsp-client-on-notification client "textDocument/publishDiagnostics" 'lsp-hack--unimplemented)
   (lsp-client-on-notification client "telemetry/event" 'lsp-hack--unimplemented)
-  (lsp-client-on-request client "window/showStatus" 'lsp-hack--unimplemented))
+  (lsp-client-on-notification client "window/logMessage" 'lsp-hack--unimplemented)
+  (lsp-client-on-notification client "window/showMessage" 'lsp-hack--unimplemented)
+  (lsp-client-on-notification client "window/progress" 'lsp-hack--unimplemented)
+  (lsp-client-on-notification client "window/actionRequired" 'lsp-hack--unimplemented)
+
+  ;; requests taken from nuclide
+  (lsp-client-on-request client "window/showMessageRequest" 'lsp-hack--unimplemented)
+  (lsp-client-on-request client "window/showStatus" 'lsp-hack--unimplemented)
+  (lsp-client-on-request client "workspace/applyEdit" 'lsp-hack--unimplemented)
+  (lsp-client-on-request client "client/registerCapability" 'lsp-hack--unimplemented)
+  (lsp-client-on-request client "client/unregisterCapability" 'lsp-hack--unimplemented)
+  )
 
 (lsp-define-stdio-client
  lsp-hack "hack"
